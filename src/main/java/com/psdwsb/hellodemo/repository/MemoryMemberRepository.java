@@ -1,6 +1,7 @@
 package com.psdwsb.hellodemo.repository;
 
 import com.psdwsb.hellodemo.domain.Member;
+import org.junit.jupiter.api.AfterEach;
 
 import java.util.*;
 
@@ -9,6 +10,10 @@ public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
     // * 현업에서는 동시성 문제 발생 가능, 공유되는 변수인 경우 ConcurrentHashMap, AtomicLong 사용을 권장 (!)
+
+    public void clearStore() {
+        store.clear();
+    }
 
     @Override
     public Member save(Member member) {
