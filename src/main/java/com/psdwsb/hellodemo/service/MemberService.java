@@ -10,7 +10,13 @@ import java.util.Optional;
 public class MemberService {
     /* Service는 비즈니스 로직에 관련한 것, Repository는 데이터를 다루는 입장에서 보기 !
      * 유사한 내용이 들어오게 되더라도, 이렇게 나누어야 나중에 기획에서 요구사항이 변경되어도 로직 변경이 용이해짐 */
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        // MemberService class 입장에서 보면, MemberRepository가 외부에서 주입된다.
+        // = Dependency Injection (DI)
+        this.memberRepository = memberRepository;
+    }
 
     /* 회원 가입 */
     public Long join(Member member) {

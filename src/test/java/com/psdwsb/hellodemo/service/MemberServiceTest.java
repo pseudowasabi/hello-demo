@@ -3,6 +3,7 @@ package com.psdwsb.hellodemo.service;
 import com.psdwsb.hellodemo.domain.Member;
 import com.psdwsb.hellodemo.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,9 +12,15 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
     // memberService 내부의 memberRepository와 다른 객체인데, 왜 clearStore로 중복 문제 해결이 되는걸까?
+
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
 
     @AfterEach
     public void afterEach() {
