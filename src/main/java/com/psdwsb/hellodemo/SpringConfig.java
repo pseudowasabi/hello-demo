@@ -30,5 +30,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
         /*return new MemoryMemberRepository();*/
         return new JdbcMemberRepository(dataSource);
+
+        // ** 기존의 코드 그대로 두면서, 편리하게 Repository 바꿔 끼우기 가능 (interface의 다형성 특징을 활용) : Open-Closed Principle (OCP)
     }
 }
