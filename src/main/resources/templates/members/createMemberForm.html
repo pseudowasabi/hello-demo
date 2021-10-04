@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="name">성함</label>
+            <input type="text" id="name" name="name" placeholder="성함이 무엇인가요?">
+            <!-- 위에 name이 서버로 넘어올 때 key 역할 ... (?) -->
+        </div>
+        <button type="submit">가입</button>
+    </form>
+</div>
+</body>
+</html>
