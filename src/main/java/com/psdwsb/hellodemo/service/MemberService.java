@@ -5,10 +5,14 @@ import com.psdwsb.hellodemo.repository.MemberRepository;
 import com.psdwsb.hellodemo.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
+// javax가 아닌 springframework의 annotation을 이용해야 함 (@Transactional)
+// JPA를 사용할 때 Service 계층에도 이 annotation이 있어야 함 (회원가입-join에 필요)
 public class MemberService {
     /* Service는 비즈니스 로직에 관련한 것, Repository는 데이터를 다루는 입장에서 보기 !
      * 유사한 내용이 들어오게 되더라도, 이렇게 나누어야 나중에 기획에서 요구사항이 변경되어도 로직 변경이 용이해짐 */
