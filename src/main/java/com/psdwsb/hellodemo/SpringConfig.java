@@ -1,6 +1,7 @@
 package com.psdwsb.hellodemo;
 
 import com.psdwsb.hellodemo.repository.JdbcMemberRepository;
+import com.psdwsb.hellodemo.repository.JdbcTemplateMemberRepository;
 import com.psdwsb.hellodemo.repository.MemberRepository;
 import com.psdwsb.hellodemo.repository.MemoryMemberRepository;
 import com.psdwsb.hellodemo.service.MemberService;
@@ -29,7 +30,8 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
         /*return new MemoryMemberRepository();*/
-        return new JdbcMemberRepository(dataSource);
+        /*return new JdbcMemberRepository(dataSource);*/
+        return new JdbcTemplateMemberRepository(dataSource);
 
         // ** 기존의 코드 그대로 두면서, 편리하게 Repository 바꿔 끼우기 가능 (interface의 다형성 특징을 활용) : Open-Closed Principle (OCP)
     }
